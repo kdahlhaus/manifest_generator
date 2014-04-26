@@ -16,9 +16,9 @@ This package contains a utility to generate the HTML5 application cache manifest
 
 License
 -------
-This software is licensed under the GNU GPL.  Please see the file 'LICENSE' for details.  Note that this license requires any software using this library to make source code available. 
+This software is licensed under the GNU GPL.  Please see the file 'LICENSE.txt' for details.  Note that this license requires any software using this library to make source code available. 
 
-Should you not wish to use the software under a different license, please contact Kevin Dahlhausen (kpd@powertwenty.com) to discuss alternative licensing.
+Should you not wish to use the software under the GNU GPL license, please contact Kevin Dahlhausen (kpd@powertwenty.com) to discuss alternative licensing.
  
 
 Requires
@@ -29,7 +29,7 @@ glob2
 Usage
 -----
 
-manifest_gen -o offlinecache.manifest -c "js/**/*.js" -c "css/**/*" -e dontcache.js -n counter.html -f fallback.html
+manifest_gen -o cache.manifest -c "js/**/*.js" -c "css/**/*" -e dontcache.js -n counter.html -f fallback.html
 
 manifest_gen -h for help
 
