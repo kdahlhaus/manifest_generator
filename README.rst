@@ -30,9 +30,13 @@ glob2 - https://github.com/miracle2k/python-glob2/
 Usage
 -----
 
-manifest_gen -o cache.manifest -c "js/**/*.js" -c "css/**/*" -e dontcache.js -n counter.html -f fallback.html
+some exaples:
 
-manifest_gen -h for help
+    manifest_gen --output cache.manifest --cache "js/**/*.js" --cache "css/**/*" --nocache dontcache.js --network counter.html --fallback fallback.html 
+
+    manifest_gen -o cache.manifest -c "js/**/*.js" -c "css/**/*" -nc dontcache.js -n counter.html -f fallback.html
+
+    manifest_gen -h
 
 
 Tests
