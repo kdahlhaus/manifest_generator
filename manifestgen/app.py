@@ -31,9 +31,13 @@ def write_cache_manifest(opened_file, cache_list=None, network_list=None, failov
 
     if network_list:
         opened_file.write("\nNETWORK:\n")
+        for n in network_list:
+            opened_file.write("%s\n"%(n[0]))
 
     if failover_list:
         opened_file.write("\nFALLBACK:\n")
+        for fb in failover_list:
+            opened_file.write("%s %s\n"%(fb[0], fb[1]))
 
 
 def write_name_value_comment(opened_file, name, value):

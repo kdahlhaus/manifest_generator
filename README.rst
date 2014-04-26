@@ -23,7 +23,8 @@ Should you not wish to use the software under the GNU GPL license, please contac
 
 Requires
 --------
-glob2
+glob2 - https://github.com/miracle2k/python-glob2/
+
 
 
 Usage

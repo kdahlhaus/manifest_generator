@@ -1,0 +1,28 @@
+CACHE MANIFEST
+
+CACHE:
+cache.manifest
+LICENSE.txt
+manifest_gen
+README.rst
+requirements.txt
+bin\manifest_gen
+manifestgen\app.py
+manifestgen\app.pyc
+manifestgen\args.py
+manifestgen\args.pyc
+manifestgen\md5digest.py
+manifestgen\md5digest.pyc
+manifestgen\__init__.py
+manifestgen\__init__.pyc
+manifestgen\tests\test_parse_args.py
+manifestgen\tests\__init__.py
+
+NETWORK:
+bin
+
+FALLBACK:
+/ fallback.html
+/out.py out.html
+
+#contentmd5=352b622627b4640585774cfb6f7496e1

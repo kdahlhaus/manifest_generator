@@ -1,6 +1,6 @@
 import argparse
 import glob2
-
+import os
 
 def parse_args(args):
     """ return results of parsing the given args
@@ -31,13 +31,15 @@ def parse_args(args):
 
 
 def glob_list_of_arg_values(arg_values):
-    "expand a list of of arg_values in the format [ ['.py'], ['zr*.img'] ] etc"
+    "expand a list of of arg_values in the format [ ['.py'], ['zr*.img'] ] etc to the contained file names, ignoring directories"
     all_files = []
     if arg_values:
         for arg_set in arg_values:
             for glob_spec in arg_set:
                 these_files = glob2.glob(glob_spec)
-                all_files += these_files
+                for file_name in these_files:
+                    if os.path.isfile(file_name):
+                        all_files.append(file_name)
     return all_files
 
 
