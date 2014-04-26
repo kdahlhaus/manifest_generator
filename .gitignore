@@ -1,1 +1,3 @@
 *.pyc
+cache.manifest
+manifest_gen
