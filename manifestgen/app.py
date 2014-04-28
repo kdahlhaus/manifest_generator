@@ -9,16 +9,14 @@ CACHE:
 NETWORK:
 FALLBACK:
 #contentmd5=43533453
-#md5=2345505
 """
+
 """
 alg:
 create new temp manifest
-calc checksum of new manifest except for last line
-compare checksums
+compare digests of new and old manifests
 if diff copy new file over to old
 """
-
 
 
 def write_cache_manifest(opened_file, cache_list=None, network_list=None, failover_list=None):
@@ -53,8 +51,7 @@ def digest_for_cache_manifest(file_name):
         with open(file_name, "r") as cmf:
             md5 = Md5Digest()
             for line in cmf.readlines():
-                if not line.startswith("md5="):  ## todo - I think this can go away, no reason to skip md5 since its not there
-                    md5.addData(line)
+                md5.addData(line)
         return md5.digest
     except:
         return -1
@@ -85,7 +82,7 @@ def main():
 
     
     # get a temporary file 
-    (fd, temp_file_name) = tempfile.mkstemp(prefix="temp_html5appcachegen_")
+    (fd, temp_file_name) = tempfile.mkstemp(prefix="temp_manifestgen_")
     os.close(fd)
 
     # digest value of contents of all cached files
@@ -106,9 +103,6 @@ def main():
         print "cache manifest contents have not changed"
     
 
-   
-
+    # remove the temporary file
     if os.path.exists(temp_file_name):
         os.unlink(temp_file_name)
-
-
