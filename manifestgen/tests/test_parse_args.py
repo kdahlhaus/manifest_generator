@@ -1,4 +1,4 @@
-from html5_cache_manifest_gen.args import parse_args
+from manifestgen.args import parse_args
 
 import unittest
 
@@ -14,7 +14,25 @@ class ParseArgsTests(unittest.TestCase):
         self.assertEqual( args.fallback, [['/', 'fallback.html'], ['/form', 'fallbackform.html']])
 
 
+    def test_default_doc_root_is_none(self):
+        command_line =  ""
+        args = parse_args(command_line.split())
+        self.assertEqual(args.doc_root, None)
 
 
+    def test_doc_root_parsing(self):
+        command_line = "-d C:/User/fuzzy -c *.png"
+        args = parse_args(command_line.split())
+        self.assertEqual(args.doc_root[0], "C:/User/fuzzy")
 
 
+    def test_default_url_prefix_is_none(self):
+        command_line =  ""
+        args = parse_args(command_line.split())
+        self.assertEqual(args.url_prefix, None) 
+
+    def test_url_prefix_parsing(self):
+        command_line = "-d C:/User/fuzzy -c *.png -u /prog/static/m"
+        args = parse_args(command_line.split())
+        self.assertEqual(args.url_prefix[0], "/prog/static/m")
+ 

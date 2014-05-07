@@ -13,10 +13,12 @@ def parse_args(args):
     
     """
     """
-    htmlacmg +c **.py -c temp.py +n counter.html -f /  fallback.html  # NO
-    htmlacmg -c **.py -nc temp.py -n counter.html -f /  fallback.html # YES
+    htmlacmg -d ~/doc_root -u /static/m -c **.py -nc temp.py -n counter.html -f /  fallback.html 
+
     """
     parser = argparse.ArgumentParser(description='Generate HTML5 app cache manifest')
+    parser.add_argument('-d','--doc_root', nargs='+', dest='doc_root', help='top-level of static file tree structure on disk')
+    parser.add_argument('-u','--url', nargs='+', dest='url_prefix', help='url prefix to add to generated file names')
     parser.add_argument('-c','--cache', action='append', nargs='+', dest="cache", help="a glob2 file expression of files to add to the cache")
     parser.add_argument('-nc','--nocache', action='append', nargs='+', dest="nocache", help="a glob2 expression of files to exclude from caching")
     parser.add_argument('-n','--network', action='append', nargs='+', dest="network")
