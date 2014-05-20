@@ -69,10 +69,20 @@ def convert_filenames_to_urls( file_names, doc_root=None, url_prefix=None):
         convert_filenames_to_urls( [ '/usr/proj/index.html', '/usr/proj/js/util.js'], '/usr/proj', '/sample/static' ) = [ '/sample/static/index.html', '/sample/static/js/util.js' ]
     """
     urls = []
+    abs_doc_root = os.path.abspath(doc_root) if doc_root else None
+    print "abs_doc_root", abs_doc_root
     for file_name in file_names:
-        # compare file_names with doc_root, truncate everythong equal to docroot
+        # compare file_names with doc_root, truncate everything equal to docroot
+        abs_file_name = os.path.abspath(file_name)
+        if abs_file_name.startswith(abs_doc_root):
+            tfn = abs_file_name[len(abs_doc_root):]
+            print "tfn", tfn
+
+        print os.path.abspath(file_name), os.path.abspath(doc_root)
         
         # if url_prefix add it
+        if url_prefix:
+            url = url_prefix + "/" 
 
         # append to urls
         
