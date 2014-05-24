@@ -74,22 +74,33 @@ def convert_filenames_to_urls( file_names, doc_root=None, url_prefix=None):
     for file_name in file_names:
         # compare file_names with doc_root, truncate everything equal to docroot
         abs_file_name = os.path.abspath(file_name)
-        if abs_file_name.startswith(abs_doc_root):
+        if abs_doc_root and abs_file_name.startswith(abs_doc_root):
             tfn = abs_file_name[len(abs_doc_root):]
             print "tfn", tfn
+        else:
+            #remove C: if it's there.  Yes, this is a hack.  Works for me.
+            if abs_file_name[1]==":":
+                tfn=abs_file_name[2:]
+            else:
+                tfn = abs_file_name
 
         print os.path.abspath(file_name), os.path.abspath(doc_root)
         
         # if url_prefix add it
         if url_prefix:
             url = url_prefix + "/" 
+        else:
+            url = "/"
+
+        url += tfn
+
+        #fix up url
+        url = url.replace("\\", "/").replace("//", "/")
 
         # append to urls
-        
+        urls.append(url)        
     
     return urls
-
-
 
 
 def main():
