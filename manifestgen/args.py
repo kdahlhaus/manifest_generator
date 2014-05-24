@@ -24,7 +24,7 @@ def parse_args(args):
     parser.add_argument('-n','--network', action='append', nargs='+', dest="network")
     parser.add_argument('-f','--fallback', action='append', nargs='+', dest="fallback")
     parser.add_argument('-o','--output', default='cache.manifest', help="the output cache manifest file")
-    #parser.add_argument('--force', help="force updating of the cache manifest file") #TODO: add a timestamp to the file to force browsers to update
+    parser.add_argument('--force', action='store_true', default=False, help="force updating of the cache manifest file") #TODO: add a timestamp to the file to force browsers to update
 
 
     args = parser.parse_args(args)

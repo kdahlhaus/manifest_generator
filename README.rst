@@ -33,6 +33,7 @@ some exaples:
 
     manifest_gen -h
 
+    manifest_gen --doc_root C:/Users/p20/projects/rc_flug_log_client/android/workspace/rc_flug_log_phonegap/assets/www --cache "C:/Users/p20/projects/rc_flug_log_client/android/workspace/rc_flug_log_phonegap/assets/www/**/*" --url "/static/mobile" 
 
 Tests
 -----

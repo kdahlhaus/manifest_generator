@@ -1,4 +1,4 @@
-import args, sys, tempfile, os
+import args, sys, tempfile, os, datetime
 
 
 from md5digest import Md5Digest
@@ -70,13 +70,11 @@ def convert_filenames_to_urls( file_names, doc_root=None, url_prefix=None):
     """
     urls = []
     abs_doc_root = os.path.abspath(doc_root) if doc_root else None
-    print "abs_doc_root", abs_doc_root
     for file_name in file_names:
         # compare file_names with doc_root, truncate everything equal to docroot
         abs_file_name = os.path.abspath(file_name)
         if abs_doc_root and abs_file_name.startswith(abs_doc_root):
             tfn = abs_file_name[len(abs_doc_root):]
-            print "tfn", tfn
         else:
             #remove C: if it's there.  Yes, this is a hack.  Works for me.
             if abs_file_name[1]==":":
@@ -84,8 +82,6 @@ def convert_filenames_to_urls( file_names, doc_root=None, url_prefix=None):
             else:
                 tfn = abs_file_name
 
-        print os.path.abspath(file_name), os.path.abspath(doc_root)
-        
         # if url_prefix add it
         if url_prefix:
             url = url_prefix + "/" 
@@ -112,11 +108,11 @@ def main():
     output_manifest_file_name = arg_values.output
     doc_root = None if not arg_values.doc_root else arg_values.doc_root[0]
     url_prefix = None if not arg_values.url_prefix else arg_values.url_prefix[0]
+    force = arg_values.force
 
     # filter out files in cached list told to not cache
     filenames_to_cache = [ fn for fn in cache_arg_files if fn not in no_cache_arg_files]
 
-    
     # get a temporary file 
     (fd, temp_file_name) = tempfile.mkstemp(prefix="temp_manifestgen_")
     os.close(fd)
@@ -125,11 +121,16 @@ def main():
     cached_urls = convert_filenames_to_urls(filenames_to_cache, doc_root, url_prefix)
 
     # digest value of contents of all cached files
-    content_md5_digest = digest_for_content(cached_urls)
+    content_md5_digest = digest_for_content(filenames_to_cache)
 
     # write temp manifest that reflects the current state
     write_cache_manifest(open(temp_file_name, "w"), cached_urls, arg_values.network, arg_values.fallback)
     write_name_value_comment(open(temp_file_name, "a"), "contentmd5", content_md5_digest)
+
+    if force:
+        write_name_value_comment(open(temp_file_name, "a"), "timestamp", str(datetime.datetime.now()))
+
+    open(temp_file_name, "a").write("\n") # terminate last line
 
 
     #compare the newly created with the old and copy if it has changed
