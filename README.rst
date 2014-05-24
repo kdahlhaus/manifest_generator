@@ -3,13 +3,6 @@ manifest_gen - a HTML5 application cache manifest generator
 Copyright 2014 by Kevin Dahlhausen (kpd@powertwenty.com)
 
 
-
-
-NOTE: ****** THIS IS NOT YET READY TO USE - the manifest format is not complete *************
-
-
-
-
 Overview
 --------
 This package contains a utility to generate the HTML5 application cache manifest file.   Running it multiple times only changes the manifest if the manifest contents or contents of files listed in the cache change. 
