@@ -2,6 +2,8 @@ manifest_gen - a HTML5 application cache manifest generator
 ===========================================================
 Copyright 2014 by Kevin Dahlhausen (kpd@powertwenty.com)
 
+**** THIS NOT YET READY -- STILL UNDER INITIAL CONSTRUCTION ****
+
 
 Overview
 --------
