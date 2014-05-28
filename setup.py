@@ -28,6 +28,6 @@ setup(
         "Environment :: Console",
     ],
     install_requires=["glob2",],
-    scripts=['manifest_gen']
+    scripts=['bin/manifest_gen']
 )
 
