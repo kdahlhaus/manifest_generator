@@ -18,6 +18,7 @@ setup(
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Environment :: Console",
     ],
+    install_requires=["glob2",],
     scripts=['manifest_gen']
 )
 
