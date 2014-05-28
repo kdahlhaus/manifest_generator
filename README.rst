@@ -1,5 +1,5 @@
-manifest_gen - a HTML5 application cache manifest generator
-===========================================================
+manifest_generator - a HTML5 application cache manifest generator
+=================================================================
 Copyright 2014 by Kevin Dahlhausen (kpd@powertwenty.com)
 
 
