@@ -1,3 +1,6 @@
 *.pyc
 cache.manifest
 manifest_gen
+build
+dist
+manifest_generator.egg-info
