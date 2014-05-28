@@ -20,7 +20,7 @@ setup(
     keywords = "html5 cache manifest",
     url = "https://github.com/kdahlhaus/manifest_generator",
     packages=['manifestgen',],
-    long_description=read("README.rst"),
+    long_description="This package contains a utility to generate the HTML5 application cache manifest file.   Running it multiple times only changes the manifest if the manifest contents or contents of files listed in the cache change. ",
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Topic :: Internet :: WWW/HTTP",
@@ -28,6 +28,6 @@ setup(
         "Environment :: Console",
     ],
     install_requires=["glob2",],
-    scripts=['bin/manifest_gen']
+    scripts=['bin/manifest_gen'],
 )
 
