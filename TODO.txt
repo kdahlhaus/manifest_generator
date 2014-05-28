@@ -1,0 +1,1 @@
+* make NETWORK section work with files like CACHE section
